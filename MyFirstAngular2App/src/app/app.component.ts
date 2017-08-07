@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     name: string = 'Tom';
+
+    inputEvent(e: any) {
+        this.name = e.target.value;
+    }
 }
