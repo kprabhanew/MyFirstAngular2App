@@ -11,7 +11,7 @@
     <tbody>
         <tr *ngFor="let employee of employees; trackBy:trackByEmpCode;">
             <td>{{employee.code | uppercase}}</td>
-            <td>{{employee.name}}</td>
+            <td>{{employee.name | employeeTitle:employee.gender}}</td>
             <td>{{employee.gender}}</td>
             <td>{{employee.annualSalary | currency:'AUD':true:'1.2-3'}}</td>
             <td>{{employee.dateOfBirth | date:'dd/MM/y' | uppercase}}</td>
