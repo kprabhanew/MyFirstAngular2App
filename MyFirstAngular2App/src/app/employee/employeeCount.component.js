@@ -12,9 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var EmployeeCountComponent = (function () {
     function EmployeeCountComponent() {
+        this.selectedRadioButtonValue = 'All';
+        this.countRadioButtonSelectionChanged = new core_1.EventEmitter();
     }
+    EmployeeCountComponent.prototype.onRadioButtonSelectionChanged = function () {
+        this.countRadioButtonSelectionChanged.emit(this.selectedRadioButtonValue);
+        console.log(this.selectedRadioButtonValue);
+    };
     return EmployeeCountComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], EmployeeCountComponent.prototype, "countRadioButtonSelectionChanged", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Number)

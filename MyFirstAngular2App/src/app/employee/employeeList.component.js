@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var EmployeeListComponent = (function () {
     function EmployeeListComponent() {
+        this.selectedEmployeeCountRadioButton = "All";
         this.employees = [
             { code: 'emp101', name: 'Tom', gender: 'Male', annualSalary: 5500, dateOfBirth: '6/25/1988' },
             { code: 'emp102', name: 'Alex', gender: 'Male', annualSalary: 5700.95, dateOfBirth: '9/6/1982' },
@@ -21,6 +22,9 @@ var EmployeeListComponent = (function () {
             { code: 'emp106', name: 'Steve', gender: 'Male', annualSalary: 7700.481, dateOfBirth: '11/18/1979' }
         ];
     }
+    EmployeeListComponent.prototype.onEmployeeCountRadioButtonChange = function (selectedRadioButtonValue) {
+        this.selectedEmployeeCountRadioButton = selectedRadioButtonValue;
+    };
     EmployeeListComponent.prototype.getTotalEmployeesCount = function () {
         return this.employees.length;
     };
