@@ -5,9 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    name: string = 'Tom';
-
-    inputEvent(e: any) {
-        this.name = e.target.value;
-    }
+    userText: string = 'Sausage Master';
 }

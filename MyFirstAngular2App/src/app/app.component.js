@@ -9,11 +9,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Tom';
+        this.userText = 'Sausage Master';
     }
-    AppComponent.prototype.inputEvent = function (e) {
-        this.name = e.target.value;
-    };
     return AppComponent;
 }());
 AppComponent = __decorate([

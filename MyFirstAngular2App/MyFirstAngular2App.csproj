@@ -107,6 +107,7 @@
     <TypeScriptCompile Include="src\app\employee\employeeCount.component.ts" />
     <TypeScriptCompile Include="src\app\employee\employeeTitle.pipe.ts" />
     <TypeScriptCompile Include="src\app\employee\employeeList.component.ts" />
+    <TypeScriptCompile Include="src\app\Others\simple.component.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>
