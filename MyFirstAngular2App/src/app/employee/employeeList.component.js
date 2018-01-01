@@ -17,7 +17,9 @@ var EmployeeListComponent = (function () {
         this.selectedEmployeeCountRadioButton = "All";
     }
     EmployeeListComponent.prototype.ngOnInit = function () {
-        this.employees = this._employeeService.getEmployees();
+        var _this = this;
+        this._employeeService.getEmployees()
+            .subscribe(function (employeeData) { return _this.employees = employeeData; });
     };
     EmployeeListComponent.prototype.onEmployeeCountRadioButtonChange = function (selectedRadioButtonValue) {
         this.selectedEmployeeCountRadioButton = selectedRadioButtonValue;
