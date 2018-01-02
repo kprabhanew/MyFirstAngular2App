@@ -14,7 +14,7 @@ export class EmployeeService {
     }
 
     getEmployees(): Observable<IEmployee[]> {
-        return this._http.get('http://localhost:52160/api/Employeess')
+        return this._http.get('http://localhost:52160/api/Employees')
             .map((response: Response) => <IEmployee[]>response.json())
             .catch(this.handleError);
     }
