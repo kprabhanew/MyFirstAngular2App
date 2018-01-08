@@ -6,7 +6,7 @@ import { UserPreferencesService } from './userPreferences.service';
 @Component({
     selector: 'list-employee',
     templateUrl: './employeeList.component.html',
-    styleUrls: ['./employeeList.component.css']    
+    styleUrls: ['./employeeList.component.css']
 })
 export class EmployeeListComponent implements OnInit{
     employees: IEmployee[];

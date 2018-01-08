@@ -8,8 +8,7 @@ import { UserPreferencesService } from '../employee/userPreferences.service';
                     <input type='text' [(ngModel)]='colour' [style.background]='colour' />
                 </div>`
 })
-export class HomeComponent {
-    
+export class HomeComponent {   
 
     constructor(private _userPreferencesService: UserPreferencesService) {
         

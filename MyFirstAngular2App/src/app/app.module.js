@@ -11,6 +11,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
+var test_module_1 = require("./test.module");
 var app_component_1 = require("./app.component");
 var employee_component_1 = require("./employee/employee.component");
 var employeeList_component_1 = require("./employee/employeeList.component");
@@ -20,7 +21,6 @@ var simple_component_1 = require("./Others/simple.component");
 var home_component_1 = require("./home/home.component");
 var pageNotFound_component_1 = require("./Others/pageNotFound.component");
 var employee_service_1 = require("./employee/employee.service");
-var userPreferences_service_1 = require("./employee/userPreferences.service");
 var appRoutes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'employees', component: employeeList_component_1.EmployeeListComponent },
@@ -35,12 +35,12 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(appRoutes)],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(appRoutes), test_module_1.TestModule],
         declarations: [app_component_1.AppComponent, employee_component_1.EmployeeComponent, employeeList_component_1.EmployeeListComponent,
             employeeTitle_pipe_1.EmployeeTitlePipe, employeeCount_component_1.EmployeeCountComponent, simple_component_1.SimpleComponent,
             home_component_1.HomeComponent, pageNotFound_component_1.PageNotFoundComponent],
         bootstrap: [app_component_1.AppComponent],
-        providers: [employee_service_1.EmployeeService, userPreferences_service_1.UserPreferencesService]
+        providers: [employee_service_1.EmployeeService]
     })
 ], AppModule);
 exports.AppModule = AppModule;
