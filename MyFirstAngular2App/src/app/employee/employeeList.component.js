@@ -11,12 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var employee_service_1 = require("./employee.service");
+var userPreferences_service_1 = require("./userPreferences.service");
 var EmployeeListComponent = (function () {
-    function EmployeeListComponent(_employeeService) {
+    function EmployeeListComponent(_employeeService, _userPreferencesService) {
         this._employeeService = _employeeService;
+        this._userPreferencesService = _userPreferencesService;
         this.selectedEmployeeCountRadioButton = "All";
         this.statusMessage = "Loading data - Please wait...";
     }
+    Object.defineProperty(EmployeeListComponent.prototype, "colour", {
+        get: function () {
+            return this._userPreferencesService.colourPreference;
+        },
+        set: function (value) {
+            this._userPreferencesService.colourPreference = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     EmployeeListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._employeeService.getEmployees()
@@ -45,7 +57,8 @@ EmployeeListComponent = __decorate([
         templateUrl: './employeeList.component.html',
         styleUrls: ['./employeeList.component.css']
     }),
-    __metadata("design:paramtypes", [employee_service_1.EmployeeService])
+    __metadata("design:paramtypes", [employee_service_1.EmployeeService,
+        userPreferences_service_1.UserPreferencesService])
 ], EmployeeListComponent);
 exports.EmployeeListComponent = EmployeeListComponent;
 //# sourceMappingURL=employeeList.component.js.map

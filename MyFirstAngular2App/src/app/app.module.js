@@ -20,6 +20,7 @@ var simple_component_1 = require("./Others/simple.component");
 var home_component_1 = require("./home/home.component");
 var pageNotFound_component_1 = require("./Others/pageNotFound.component");
 var employee_service_1 = require("./employee/employee.service");
+var userPreferences_service_1 = require("./employee/userPreferences.service");
 var appRoutes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'employees', component: employeeList_component_1.EmployeeListComponent },
@@ -39,7 +40,7 @@ AppModule = __decorate([
             employeeTitle_pipe_1.EmployeeTitlePipe, employeeCount_component_1.EmployeeCountComponent, simple_component_1.SimpleComponent,
             home_component_1.HomeComponent, pageNotFound_component_1.PageNotFoundComponent],
         bootstrap: [app_component_1.AppComponent],
-        providers: [employee_service_1.EmployeeService]
+        providers: [employee_service_1.EmployeeService, userPreferences_service_1.UserPreferencesService]
     })
 ], AppModule);
 exports.AppModule = AppModule;
