@@ -2,6 +2,11 @@
 import { IEmployee } from './employee';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from './employee.service';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/retrywhen';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/scan';
+
 
 @Component({
     selector: 'my-employee',
@@ -24,18 +29,27 @@ export class EmployeeComponent implements OnInit {
     ngOnInit() {
         let empCode: string = this._activatedRoute.snapshot.params['code'];
         this._employeeService.getEmployeeByCode(empCode)
-            .then((employeeData) => {
+            .retryWhen((err) => {
+                return err.scan((retryCount) => {
+                    retryCount += 1;
+                    if (retryCount < 6) {
+                        this.statusMessage = 'Retrying....Attempt # ' + retryCount;
+                        return retryCount;
+                    } else {
+                        throw (err);
+                    }
+                }, 0).delay(1000)
+            })
+            .subscribe((employeeData) => {
                 if (employeeData == null) {
                     this.statusMessage = "Employee with the specified Employee Code does not exist.";
                 } else {
                     this.employee = employeeData
                 }
-            }
-            )
-            .catch((error) => {
+            },
+            (error) => {
                 this.statusMessage = "Problem with the service. Please try again later.";
                 console.error(error)
-            }
-            );
+            });
     }
 }

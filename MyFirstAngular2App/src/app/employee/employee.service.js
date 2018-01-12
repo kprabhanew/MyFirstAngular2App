@@ -28,8 +28,7 @@ var EmployeeService = (function () {
     EmployeeService.prototype.getEmployeeByCode = function (empCode) {
         return this._http.get('http://localhost:52160/api/Employees/' + empCode)
             .map(function (response) { return response.json(); })
-            .toPromise()
-            .catch(this.handlePromiseError);
+            .catch(this.handleError);
     };
     EmployeeService.prototype.handlePromiseError = function (error) {
         console.error(error);
