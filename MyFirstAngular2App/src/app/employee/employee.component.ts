@@ -6,6 +6,7 @@ import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/retrywhen';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/scan';
+import { ISubscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class EmployeeComponent implements OnInit {
     employee: IEmployee;
     statusMessage: string = "Loading data. Please wait...";
 
+    subscription: ISubscription;
+
     constructor(private _employeeService: EmployeeService,
         private _activatedRoute: ActivatedRoute,
         private _router: Router) {
@@ -26,9 +29,14 @@ export class EmployeeComponent implements OnInit {
         this._router.navigate(['/employees']);
     }
 
+    onCancelButtonClick(): void {
+        this.statusMessage = 'Request Cancelled';
+        this.subscription.unsubscribe();
+    }
+
     ngOnInit() {
         let empCode: string = this._activatedRoute.snapshot.params['code'];
-        this._employeeService.getEmployeeByCode(empCode)
+        this.subscription = this._employeeService.getEmployeeByCode(empCode)
             .retryWhen((err) => {
                 return err.scan((retryCount) => {
                     retryCount += 1;

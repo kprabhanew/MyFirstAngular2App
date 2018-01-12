@@ -26,10 +26,14 @@ var EmployeeComponent = (function () {
     EmployeeComponent.prototype.onBackButtonClick = function () {
         this._router.navigate(['/employees']);
     };
+    EmployeeComponent.prototype.onCancelButtonClick = function () {
+        this.statusMessage = 'Request Cancelled';
+        this.subscription.unsubscribe();
+    };
     EmployeeComponent.prototype.ngOnInit = function () {
         var _this = this;
         var empCode = this._activatedRoute.snapshot.params['code'];
-        this._employeeService.getEmployeeByCode(empCode)
+        this.subscription = this._employeeService.getEmployeeByCode(empCode)
             .retryWhen(function (err) {
             return err.scan(function (retryCount) {
                 retryCount += 1;
